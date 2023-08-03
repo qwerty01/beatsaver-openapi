@@ -39,7 +39,7 @@ pub struct MapDetail {
     #[serde(rename = "stats", skip_serializing_if = "Option::is_none")]
     pub stats: Option<Box<crate::models::MapStats>>,
     #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
-    pub tags: Option<Vec<String>>,
+    pub tags: Option<Vec<Tags>>,
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<String>,
     #[serde(rename = "uploaded", skip_serializing_if = "Option::is_none")]
@@ -73,5 +73,104 @@ impl MapDetail {
             uploader: None,
             versions: None,
         }
+    }
+}
+
+///
+#[derive(Clone, Copy, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Serialize, Deserialize)]
+pub enum Tags {
+    #[serde(rename = "None")]
+    None,
+    #[serde(rename = "Tech")]
+    Tech,
+    #[serde(rename = "DanceStyle")]
+    DanceStyle,
+    #[serde(rename = "Speed")]
+    Speed,
+    #[serde(rename = "Balanced")]
+    Balanced,
+    #[serde(rename = "Challenge")]
+    Challenge,
+    #[serde(rename = "Accuracy")]
+    Accuracy,
+    #[serde(rename = "Fitness")]
+    Fitness,
+    #[serde(rename = "Swing")]
+    Swing,
+    #[serde(rename = "Nightcore")]
+    Nightcore,
+    #[serde(rename = "Folk")]
+    Folk,
+    #[serde(rename = "Family")]
+    Family,
+    #[serde(rename = "Ambient")]
+    Ambient,
+    #[serde(rename = "Funk")]
+    Funk,
+    #[serde(rename = "Jazz")]
+    Jazz,
+    #[serde(rename = "Classical")]
+    Classical,
+    #[serde(rename = "Soul")]
+    Soul,
+    #[serde(rename = "Speedcore")]
+    Speedcore,
+    #[serde(rename = "Punk")]
+    Punk,
+    #[serde(rename = "RB")]
+    Rb,
+    #[serde(rename = "Holiday")]
+    Holiday,
+    #[serde(rename = "Vocaloid")]
+    Vocaloid,
+    #[serde(rename = "JRock")]
+    JRock,
+    #[serde(rename = "Trance")]
+    Trance,
+    #[serde(rename = "DrumBass")]
+    DrumBass,
+    #[serde(rename = "Comedy")]
+    Comedy,
+    #[serde(rename = "Instrumental")]
+    Instrumental,
+    #[serde(rename = "Hardcore")]
+    Hardcore,
+    #[serde(rename = "KPop")]
+    KPop,
+    #[serde(rename = "Indie")]
+    Indie,
+    #[serde(rename = "Techno")]
+    Techno,
+    #[serde(rename = "House")]
+    House,
+    #[serde(rename = "Game")]
+    Game,
+    #[serde(rename = "Film")]
+    Film,
+    #[serde(rename = "Alt")]
+    Alt,
+    #[serde(rename = "Dubstep")]
+    Dubstep,
+    #[serde(rename = "Metal")]
+    Metal,
+    #[serde(rename = "Anime")]
+    Anime,
+    #[serde(rename = "HipHop")]
+    HipHop,
+    #[serde(rename = "JPop")]
+    JPop,
+    #[serde(rename = "Dance")]
+    Dance,
+    #[serde(rename = "Rock")]
+    Rock,
+    #[serde(rename = "Pop")]
+    Pop,
+    #[serde(rename = "Electronic")]
+    Electronic,
+}
+
+impl Default for Tags {
+    fn default() -> Tags {
+        Self::None
     }
 }
