@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**auth** | Option<[**crate::models::AuthRequest**](AuthRequest.md)> |  | [optional]
+**auth** | Option<[**models::AuthRequest**](AuthRequest.md)> |  | [optional]
 **direction** | Option<**bool**> |  | [optional]
 **hash** | Option<**String**> |  | [optional]
 

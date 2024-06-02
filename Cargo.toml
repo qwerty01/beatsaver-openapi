@@ -5,14 +5,11 @@ authors = ["OpenAPI Generator team and contributors"]
 description = "WIP  If you want to keep any kind of mirror instead of making 100s of requests instead consider subscribing to the websocket api. wss://ws.beatsaver.com/maps  Messages will be in the style {\"type\": \"MAP_UPDATE\", \"msg\": __MAP_DATA_HERE__}"
 # Override this license by providing a License Object in the OpenAPI.
 license = "Unlicense"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
-serde = "^1.0"
-serde_derive = "^1.0"
+serde = { version = "^1.0", features = ["derive"] }
 serde_json = "^1.0"
-url = "^2.2"
-uuid = { version = "^1.0", features = ["serde"] }
-[dependencies.reqwest]
-version = "^0.11"
-features = ["json", "multipart"]
+url = "^2.5"
+uuid = { version = "^1.8", features = ["serde", "v4"] }
+reqwest = { version = "^0.12", features = ["json", "multipart"] }

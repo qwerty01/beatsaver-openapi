@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cover_url** | Option<**String**> |  | [optional]
 **created_at** | Option<**String**> |  | [optional]
-**diffs** | Option<[**Vec<crate::models::MapDifficulty>**](MapDifficulty.md)> |  | [optional]
+**diffs** | Option<[**Vec<models::MapDifficulty>**](MapDifficulty.md)> |  | [optional]
 **download_url** | Option<**String**> |  | [optional]
 **feedback** | Option<**String**> |  | [optional]
 **hash** | Option<**String**> |  | [optional]
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **scheduled_at** | Option<**String**> |  | [optional]
 **state** | Option<**String**> |  | [optional]
 **testplay_at** | Option<**String**> |  | [optional]
-**testplays** | Option<[**Vec<crate::models::MapTestplay>**](MapTestplay.md)> |  | [optional]
+**testplays** | Option<[**Vec<models::MapTestplay>**](MapTestplay.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

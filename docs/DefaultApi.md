@@ -4,8 +4,10 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**maps_collaborations_id_get**](DefaultApi.md#maps_collaborations_id_get) | **GET** /maps/collaborations/{id} | Get maps by a user, including collaborations
 [**maps_hash_hash_get**](DefaultApi.md#maps_hash_hash_get) | **GET** /maps/hash/{hash} | Get map(s) for a map hash
 [**maps_id_id_get**](DefaultApi.md#maps_id_id_get) | **GET** /maps/id/{id} | Get map information
+[**maps_ids_ids_get**](DefaultApi.md#maps_ids_ids_get) | **GET** /maps/ids/{ids} | Get maps for mapIds
 [**maps_latest_get**](DefaultApi.md#maps_latest_get) | **GET** /maps/latest | Get maps ordered by upload/publish/updated. If you're going to scrape the data and make 100s of requests make this this endpoint you use.
 [**maps_plays_page_get**](DefaultApi.md#maps_plays_page_get) | **GET** /maps/plays/{page} | Get maps ordered by play count (Not currently tracked)
 [**maps_uploader_id_page_get**](DefaultApi.md#maps_uploader_id_page_get) | **GET** /maps/uploader/{id}/{page} | Get maps by a user
@@ -16,6 +18,7 @@ Method | HTTP request | Description
 [**playlists_user_user_id_page_get**](DefaultApi.md#playlists_user_user_id_page_get) | **GET** /playlists/user/{userId}/{page} | Get playlists by user
 [**search_text_page_get**](DefaultApi.md#search_text_page_get) | **GET** /search/text/{page} | Search for maps
 [**users_id_id_get**](DefaultApi.md#users_id_id_get) | **GET** /users/id/{id} | Get user info
+[**users_ids_ids_get**](DefaultApi.md#users_ids_ids_get) | **GET** /users/ids/{ids} | Get user info
 [**users_name_name_get**](DefaultApi.md#users_name_name_get) | **GET** /users/name/{name} | Get user info by name
 [**users_verify_post**](DefaultApi.md#users_verify_post) | **POST** /users/verify | Verify user tokens
 [**vote_get**](DefaultApi.md#vote_get) | **GET** /vote | Get votes
@@ -23,9 +26,39 @@ Method | HTTP request | Description
 
 
 
+## maps_collaborations_id_get
+
+> models::SearchResponse maps_collaborations_id_get(id, before, page_size)
+Get maps by a user, including collaborations
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**id** | **i32** | id | [required] |
+**before** | Option<**String**> | before |  |
+**page_size** | Option<**i32**> | 1 - 100 |  |[default to 20]
+
+### Return type
+
+[**models::SearchResponse**](SearchResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## maps_hash_hash_get
 
-> crate::models::MapDetail maps_hash_hash_get(hash)
+> models::MapDetail maps_hash_hash_get(hash)
 Get map(s) for a map hash
 
 ### Parameters
@@ -37,7 +70,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::MapDetail**](MapDetail.md)
+[**models::MapDetail**](MapDetail.md)
 
 ### Authorization
 
@@ -53,7 +86,7 @@ No authorization required
 
 ## maps_id_id_get
 
-> crate::models::MapDetail maps_id_id_get(id)
+> models::MapDetail maps_id_id_get(id)
 Get map information
 
 ### Parameters
@@ -65,7 +98,35 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::MapDetail**](MapDetail.md)
+[**models::MapDetail**](MapDetail.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## maps_ids_ids_get
+
+> models::MapDetail maps_ids_ids_get(ids)
+Get maps for mapIds
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**ids** | **String** | Up to 50 ids seperated by commas | [required] |
+
+### Return type
+
+[**models::MapDetail**](MapDetail.md)
 
 ### Authorization
 
@@ -81,7 +142,7 @@ No authorization required
 
 ## maps_latest_get
 
-> crate::models::SearchResponse maps_latest_get(after, automapper, before, sort)
+> models::SearchResponse maps_latest_get(after, automapper, before, page_size, sort, verified)
 Get maps ordered by upload/publish/updated. If you're going to scrape the data and make 100s of requests make this this endpoint you use.
 
 ### Parameters
@@ -92,11 +153,13 @@ Name | Type | Description  | Required | Notes
 **after** | Option<**String**> | Like `before` but will get you maps more recent than the time supplied. YYYY-MM-DDTHH:MM:SS+00:00 |  |
 **automapper** | Option<**bool**> | true = both, false = no ai |  |
 **before** | Option<**String**> | You probably want this. Supplying the uploaded time of the last map in the previous page will get you another page. YYYY-MM-DDTHH:MM:SS+00:00 |  |
+**page_size** | Option<**i32**> | 1 - 100 |  |[default to 20]
 **sort** | Option<**String**> | sort |  |
+**verified** | Option<**bool**> | false = no verified mappers, null = both, true = verified mappers only |  |
 
 ### Return type
 
-[**crate::models::SearchResponse**](SearchResponse.md)
+[**models::SearchResponse**](SearchResponse.md)
 
 ### Authorization
 
@@ -112,7 +175,7 @@ No authorization required
 
 ## maps_plays_page_get
 
-> crate::models::SearchResponse maps_plays_page_get(page)
+> models::SearchResponse maps_plays_page_get(page)
 Get maps ordered by play count (Not currently tracked)
 
 ### Parameters
@@ -124,7 +187,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::SearchResponse**](SearchResponse.md)
+[**models::SearchResponse**](SearchResponse.md)
 
 ### Authorization
 
@@ -140,7 +203,7 @@ No authorization required
 
 ## maps_uploader_id_page_get
 
-> crate::models::SearchResponse maps_uploader_id_page_get(id, page)
+> models::SearchResponse maps_uploader_id_page_get(id, page)
 Get maps by a user
 
 ### Parameters
@@ -153,7 +216,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::SearchResponse**](SearchResponse.md)
+[**models::SearchResponse**](SearchResponse.md)
 
 ### Authorization
 
@@ -169,7 +232,7 @@ No authorization required
 
 ## playlists_id_id_batch_post
 
-> crate::models::ActionResponse playlists_id_id_batch_post(id, no_reflection_body)
+> models::ActionResponse playlists_id_id_batch_post(id, no_reflection_body)
 Add or remove up to 100 maps to a playlist. Requires OAUTH
 
 ### Parameters
@@ -182,7 +245,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::ActionResponse**](ActionResponse.md)
+[**models::ActionResponse**](ActionResponse.md)
 
 ### Authorization
 
@@ -198,7 +261,7 @@ No authorization required
 
 ## playlists_id_id_page_get
 
-> crate::models::PlaylistPage playlists_id_id_page_get(id, page)
+> models::PlaylistPage playlists_id_id_page_get(id, page)
 Get playlist detail
 
 ### Parameters
@@ -211,7 +274,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PlaylistPage**](PlaylistPage.md)
+[**models::PlaylistPage**](PlaylistPage.md)
 
 ### Authorization
 
@@ -227,7 +290,7 @@ No authorization required
 
 ## playlists_latest_get
 
-> crate::models::PlaylistSearchResponse playlists_latest_get(after, before, sort)
+> models::PlaylistSearchResponse playlists_latest_get(after, before, page_size, sort)
 Get playlists ordered by created/updated
 
 ### Parameters
@@ -237,11 +300,12 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **after** | Option<**String**> | Like `before` but will get you maps more recent than the time supplied. YYYY-MM-DDTHH:MM:SS+00:00 |  |
 **before** | Option<**String**> | You probably want this. Supplying the uploaded time of the last map in the previous page will get you another page. YYYY-MM-DDTHH:MM:SS+00:00 |  |
+**page_size** | Option<**i32**> | 1 - 100 |  |[default to 20]
 **sort** | Option<**String**> | sort |  |
 
 ### Return type
 
-[**crate::models::PlaylistSearchResponse**](PlaylistSearchResponse.md)
+[**models::PlaylistSearchResponse**](PlaylistSearchResponse.md)
 
 ### Authorization
 
@@ -257,7 +321,7 @@ No authorization required
 
 ## playlists_search_page_get
 
-> crate::models::PlaylistSearchResponse playlists_search_page_get(page, sort_order, curated, from, include_empty, max_nps, min_nps, q, to, verified)
+> models::PlaylistSearchResponse playlists_search_page_get(page, sort_order, curated, from, include_empty, max_nps, min_nps, q, to, verified)
 Search for playlists
 
 ### Parameters
@@ -278,7 +342,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PlaylistSearchResponse**](PlaylistSearchResponse.md)
+[**models::PlaylistSearchResponse**](PlaylistSearchResponse.md)
 
 ### Authorization
 
@@ -294,7 +358,7 @@ No authorization required
 
 ## playlists_user_user_id_page_get
 
-> crate::models::PlaylistSearchResponse playlists_user_user_id_page_get(page, user_id)
+> models::PlaylistSearchResponse playlists_user_user_id_page_get(page, user_id)
 Get playlists by user
 
 ### Parameters
@@ -307,7 +371,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PlaylistSearchResponse**](PlaylistSearchResponse.md)
+[**models::PlaylistSearchResponse**](PlaylistSearchResponse.md)
 
 ### Authorization
 
@@ -323,7 +387,7 @@ No authorization required
 
 ## search_text_page_get
 
-> crate::models::SearchResponse search_text_page_get(page, sort_order, automapper, chroma, cinema, curated, from, full_spread, max_bpm, max_duration, max_nps, max_rating, me, min_bpm, min_duration, min_nps, min_rating, noodle, q, ranked, tags, to, verified)
+> models::SearchResponse search_text_page_get(page, sort_order, automapper, chroma, cinema, curated, followed, from, full_spread, max_bpm, max_duration, max_nps, max_rating, me, min_bpm, min_duration, min_nps, min_rating, noodle, q, ranked, tags, to, verified)
 Search for maps
 
 ### Parameters
@@ -337,6 +401,7 @@ Name | Type | Description  | Required | Notes
 **chroma** | Option<**bool**> | chroma |  |
 **cinema** | Option<**bool**> | cinema |  |
 **curated** | Option<**bool**> | curated |  |
+**followed** | Option<**bool**> | followed |  |
 **from** | Option<**String**> | from |  |
 **full_spread** | Option<**bool**> | fullSpread |  |
 **max_bpm** | Option<[**serde_json::Value**](.md)> | Float |  |
@@ -357,7 +422,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::SearchResponse**](SearchResponse.md)
+[**models::SearchResponse**](SearchResponse.md)
 
 ### Authorization
 
@@ -373,7 +438,7 @@ No authorization required
 
 ## users_id_id_get
 
-> crate::models::UserDetail users_id_id_get(id)
+> models::UserDetail users_id_id_get(id)
 Get user info
 
 ### Parameters
@@ -385,7 +450,35 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::UserDetail**](UserDetail.md)
+[**models::UserDetail**](UserDetail.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## users_ids_ids_get
+
+> models::UserDetail users_ids_ids_get(ids)
+Get user info
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**ids** | **String** | ids | [required] |
+
+### Return type
+
+[**models::UserDetail**](UserDetail.md)
 
 ### Authorization
 
@@ -401,7 +494,7 @@ No authorization required
 
 ## users_name_name_get
 
-> crate::models::UserDetail users_name_name_get(name)
+> models::UserDetail users_name_name_get(name)
 Get user info by name
 
 ### Parameters
@@ -413,7 +506,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::UserDetail**](UserDetail.md)
+[**models::UserDetail**](UserDetail.md)
 
 ### Authorization
 
@@ -429,7 +522,7 @@ No authorization required
 
 ## users_verify_post
 
-> crate::models::VerifyResponse users_verify_post(no_reflection_body)
+> models::VerifyResponse users_verify_post(no_reflection_body)
 Verify user tokens
 
 ### Parameters
@@ -441,7 +534,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::VerifyResponse**](VerifyResponse.md)
+[**models::VerifyResponse**](VerifyResponse.md)
 
 ### Authorization
 
@@ -457,7 +550,7 @@ No authorization required
 
 ## vote_get
 
-> Vec<crate::models::VoteSummary> vote_get(since)
+> Vec<models::VoteSummary> vote_get(since)
 Get votes
 
 ### Parameters
@@ -469,7 +562,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::VoteSummary>**](VoteSummary.md)
+[**Vec<models::VoteSummary>**](VoteSummary.md)
 
 ### Authorization
 
@@ -485,7 +578,7 @@ No authorization required
 
 ## vote_post
 
-> crate::models::VoteResponse vote_post(no_reflection_body)
+> models::VoteResponse vote_post(no_reflection_body)
 Vote on a map
 
 ### Parameters
@@ -497,7 +590,7 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::VoteResponse**](VoteResponse.md)
+[**models::VoteResponse**](VoteResponse.md)
 
 ### Authorization
 

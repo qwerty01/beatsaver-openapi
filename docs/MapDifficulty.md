@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**bl_stars** | Option<[**serde_json::Value**](.md)> |  | [optional]
 **bombs** | Option<**i32**> |  | [optional]
 **characteristic** | Option<**String**> |  | [optional]
 **chroma** | Option<**bool**> |  | [optional]
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 **nps** | Option<**f64**> |  | [optional]
 **obstacles** | Option<**i32**> |  | [optional]
 **offset** | Option<[**serde_json::Value**](.md)> |  | [optional]
-**parity_summary** | Option<[**crate::models::MapParitySummary**](MapParitySummary.md)> |  | [optional]
+**parity_summary** | Option<[**models::MapParitySummary**](MapParitySummary.md)> |  | [optional]
 **seconds** | Option<**f64**> |  | [optional]
 **stars** | Option<[**serde_json::Value**](.md)> |  | [optional]
 
