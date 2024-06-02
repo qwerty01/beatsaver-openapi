@@ -46,3 +46,4 @@ pub mod vote_response;
 pub use self::vote_response::VoteResponse;
 pub mod vote_summary;
 pub use self::vote_summary::VoteSummary;
+pub use serde_json;
