@@ -10,6 +10,7 @@
 
 use crate::models;
 use serde::{Deserialize, Serialize};
+use serde_aux::container_attributes::deserialize_struct_case_insensitive;
 
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct MapDetail {
@@ -49,7 +50,11 @@ pub struct MapDetail {
     pub ranked: Option<bool>,
     #[serde(rename = "stats", skip_serializing_if = "Option::is_none")]
     pub stats: Option<Box<models::MapStats>>,
-    #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "tags",
+        skip_serializing_if = "Option::is_none",
+        deserialize_with = "deserialize_struct_case_insensitive"
+    )]
     pub tags: Option<Vec<Tags>>,
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<String>,
